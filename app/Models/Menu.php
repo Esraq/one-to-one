@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\SubMenu;
 
-class Address extends Model
+class Menu extends Model
 {
     use HasFactory;
 
-
-    public function user(){
-
-        return $this->belongsTo(User::class,'u_id','id');
+    public function submenu()
+    {
+        return $this->hasMany('App\Models\SubMenu');
     }
+
+
 
 }

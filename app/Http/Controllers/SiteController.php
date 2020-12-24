@@ -8,6 +8,7 @@ use App\Models\User;
 
 use App\Models\Address;
 
+use App\Models\Menu;
 
 class SiteController extends Controller
 {
@@ -18,10 +19,16 @@ class SiteController extends Controller
      */
     public function index()
     {
-      ///  $users=User::all();
-        ////view()->share('users', $users);
-        $items=Address::all();
-        view()->share('items', $items);
+       ///$users=User::all();
+       ///view()->share('users', $users);
+
+       $menu = Menu::with('submenu')->orderby('weight','asc')->get();
+
+
+       //// $items=User::all();
+
+      /// $items=\App\Models\User::with('addresses')->get();
+        view()->share('menu', $menu);
         return view('welcome');
     }
 

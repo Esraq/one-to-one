@@ -11,27 +11,29 @@
 <body>
 
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Email</th>
-        <th>Address</th>
 
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($items as $item)
-      <tr>
-        <td>{{$item->country}}</td>
-        <td>{{$item->id }}</td>
-        <td>{{$item->user->email}}</td>
-      </tr>
-     @endforeach
-    </tbody>
-  </table>
+     <p>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul id="top-menu" class="nav navbar-nav navbar-center main-nav">
+                <li class="active"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+                @foreach($menu as $menuItem)
+                <li class="dropdown">
+                    <a href="{{$menuItem->url}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{$menuItem->menu_name}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach($menuItem->submenu as $subMenuItem)
+                        <li><a href="{{$subMenuItem->link}}">{{$subMenuItem->submenu_name}}</a></li>
+                        @endforeach
+                    </ul>
+
+                </li>
+              @endforeach
+
+     </p>
+
+
+
+
 </div>
 
 </body>
